@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
-import { ErrorPage } from '../modules/generic/ErrorPage';
-import { CharacterGridPage } from '../modules/character-grid/CharacterGridPage';
-import { CharacterDetailsPage } from '../modules/character-details/CharacterDetailsPage';
+import { ErrorPage } from '../pages/ErrorPage';
+import { CharacterGridPage } from '../pages/CharacterGridPage';
+import { CharacterDetailsPage } from '../pages/CharacterDetailsPage';
 
 export default function AppRoutes() {
   return (
