@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { Character, Episode } from "../app/domain";
-import { Stack, Text } from "./common";
+import { Badge, Stack, Text } from "./common";
 
 export const CharacterBox = styled(Stack)`
 
@@ -50,6 +50,12 @@ export const CharacterDetails = ({ character, episodes }: { character: Character
         <ol>
             <li><Text>Status: { character.status }</Text></li>
             <li><Text>Species: { character.species }</Text></li>
+            <li>
+                <Stack orientation="row" alignItems="center">
+                    <Text>Gender: </Text>
+                    <Badge color={character.gender === 'Female' ? 'rgba(255, 0, 126, 0.43)' : 'rgba(0, 0, 255, 0.5)'}>{ character.gender }</Badge>
+                </Stack>
+            </li>
             <li><Text>Origin: { character.origin.name }</Text></li>
             <li><Text>Location: { character.location.name }</Text></li>
             <li>

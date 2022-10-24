@@ -7,7 +7,7 @@ export const Text = styled.div<{fontSize?: string, color?: string}>`
     margin: 20px;
 `;
 
-export const Stack = styled.div<{gap?:string, justifyContent?: string, alignItems?: string, orientation?: string}>`
+export const Stack = styled.div<{gap?:string, justifyContent?: string, alignItems?: string, orientation?: 'row' | 'column'}>`
     display: flex;
     gap: ${props => props.gap};
     justify-content: ${props => props.justifyContent ?? 'flex-start'};
@@ -32,3 +32,13 @@ export const Button = styled.div`
     border: 2px solid #abdb85;
     border-radius: 50px;
 `;
+
+export const Badge = styled.div<{color?: string}>`
+
+    background: ${props => props.color};
+    padding: 6px 14px;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 50px;
+`
+
