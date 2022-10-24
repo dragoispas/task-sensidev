@@ -14,7 +14,7 @@ const CharacterGrid = styled.div`
     align-items: center;
     justify-content: center;
     max-width: 1560px;
-
+    gap: 15px;
     margin: 20px auto;
 `;
 

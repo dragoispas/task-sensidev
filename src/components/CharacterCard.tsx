@@ -12,7 +12,6 @@ const Card = styled.div`
     align-items: center;
     gap: 5px;
     border: 1px solid grey;
-    margin: 5px;
     padding: 0px 10px;
     background-image: url("./images/card.jpg");
     background-size: 265px 150px;
