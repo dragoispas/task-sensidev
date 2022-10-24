@@ -41,15 +41,11 @@ export const CharacterGridPage = () => {
                         characters.map((character) => (
                             <CharacterCard key={character.id} id={character.id} name={character.name.toUpperCase()} status={character.status} image={character.image}/>
                         ))
-                    ) : (
-                        <></>
-                    )
+                    ) : null
                 }
             </CharacterGrid>
             { 
-                page === maxPage || characters.length===0 ? (
-                    <></>
-                ) : (
+                page === maxPage || characters.length === 0 ? null : (
                     <Button onClick={() => {(dispatch as AppDispatch)(retrieveMoreCharacters({ name: debouncedSearchInput, status: status, page: page + 1 }));}}>LOAD MORE</Button>
                 )
             }

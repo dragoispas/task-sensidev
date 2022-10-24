@@ -37,27 +37,26 @@ const CardText = styled.div<{fontSize?:string}>`
     font-size: ${props => props.fontSize};
 `;
 
-interface Props{
+interface Props {
     name: string;
     status: string;
     image: string;
     id: number;
 }
 
-export const CharacterCard:React.FC<Props> = ({name, status, image, id}) => {
+export const CharacterCard: React.FC<Props> = ({name, status, image, id}) => {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        console.log(`/character/${id}`);
         navigate(`/character/${id}`);
     };
 
     return (
         <Card onClick={handleClick}>
-            <CardImage className="character_image" src={image} alt='.'/>
+            <CardImage src={image} alt='.' data-testid="card-image" />
             <Stack gap="10px">
-                <CardText className="character_name">{name}</CardText>
-                <CardText fontSize="14px" className="character_status">Status: {status}</CardText>
+                <CardText data-testid="card-name">{name}</CardText>
+                <CardText fontSize="14px">Status: {status}</CardText>
             </Stack>
         </Card>
     )
