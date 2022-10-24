@@ -14,7 +14,7 @@ const Card = styled.div`
     border: 1px solid grey;
     margin: 5px;
     padding: 0px 10px;
-    background-image: url("./card.jpg");
+    background-image: url("./images/card.jpg");
     background-size: 265px 150px;
     cursor: pointer;
 
