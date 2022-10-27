@@ -23,7 +23,9 @@ export const CharacterDetailsPage = () => {
         /* Only request the character from the API if it's not already present in Redux (from a previous interaction). */
         if (!charactersMap[parseInt(id)]) {
             getCharacter(parseInt(id)).then((result) => {
-                dispatch(addCharacterToMap(result));
+                if (result) {
+                    dispatch(addCharacterToMap(result));
+                }
             });
         }
     }, [id, charactersMap, dispatch]);

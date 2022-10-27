@@ -34,6 +34,10 @@ export async function getCharacter(characterId: number) {
             method: 'GET',
         });
 
+        if (response.status === 404) {
+            return null;
+        }
+
         return response.json();
     } catch (err) {
         return null;
