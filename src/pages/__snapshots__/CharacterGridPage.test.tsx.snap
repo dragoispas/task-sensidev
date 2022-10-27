@@ -57,7 +57,7 @@ exports[`Renders the grid page and matches snapshot 1`] = `
     </select>
   </div>
   <div
-    className="css-kj7lrm"
+    className="css-127cqp7"
   />
 </div>
 `;
