@@ -20,7 +20,8 @@ const CharacterGrid = styled.div`
 
 export const CharacterGridPage = () => {
     const dispatch = useDispatch();
-    const { characters, page, maxPage, errorMessage } = useSelector((state: RootState) => state.characters);
+    const { charactersIds, charactersMap, page, maxPage, errorMessage } = useSelector((state: RootState) => state.characters);
+    const characters = charactersIds.map(characterId => charactersMap[characterId]);
 
     const [searchInput, setSearchInput] = useState<string>('');
     const [status, setStatus] = useState<string>('');
@@ -40,11 +41,11 @@ export const CharacterGridPage = () => {
                     !errorMessage ? (
                         characters.length > 0 ?
                             characters.map((character) => (
-                                <CharacterCard key={character.id} id={character.id} name={character.name.toUpperCase()} status={character.status} image={character.image}/>
-                            )) :
-                            (
-                                <Text>What you are looking for does not exist in this universe!</Text>
-                            )
+                                    <CharacterCard key={character.id} id={character.id} name={character.name.toUpperCase()} status={character.status} image={character.image}/>
+                                )) :
+                                (
+                                    <Text>What you are looking for does not exist in this universe!</Text>
+                                )
                     ) : (
                         <Text>Error: {errorMessage}</Text>
                     )

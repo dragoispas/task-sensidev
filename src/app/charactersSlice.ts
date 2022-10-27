@@ -9,7 +9,7 @@ export type CharacterMap = {
 }
 
 export interface CharactersState {
-  characters: Character[],
+  charactersIds: number[],
   charactersMap: CharacterMap,
   page: number,
   maxPage: number,
@@ -17,7 +17,7 @@ export interface CharactersState {
 }
 
 const initialState: CharactersState = {
-  characters: [],
+  charactersIds: [],
   charactersMap: {},
   page: 1,
   maxPage: 1,
@@ -29,10 +29,10 @@ export const charactersSlice = createSlice({
   initialState,
   reducers: {
     setCharacters: (state, action: PayloadAction<Character[]>) => {
-      state.characters = action.payload;
+      state.charactersIds = action.payload.map(character => character.id);
 
       const charactersMap: CharacterMap = {};
-      state.characters.forEach(character => charactersMap[character.id] = character);
+      action.payload.forEach(character => charactersMap[character.id] = character);
       state.charactersMap = charactersMap;
     },
     setCharactersMap: (state, action: PayloadAction<CharacterMap>) => {
@@ -43,8 +43,7 @@ export const charactersSlice = createSlice({
       state.charactersMap[character.id] = character;
     },
     appendCharacters: (state, action: PayloadAction<Character[]>) => {
-      state.characters = state.characters.concat(action.payload);
-
+      state.charactersIds = state.charactersIds.concat(action.payload.map(character => character.id));
       action.payload.forEach(character => state.charactersMap[character.id] = character);
     },
     setPage: (state, action: PayloadAction<number>) => {
