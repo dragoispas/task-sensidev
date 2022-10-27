@@ -1,11 +1,17 @@
-import { BrowserRouter } from "react-router-dom";
-import AppRoutes from "./app/app-routes";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { CharacterDetailsPage } from "./pages/CharacterDetailsPage";
+import { CharacterGridPage } from "./pages/CharacterGridPage";
+import { ErrorPage } from "./pages/ErrorPage";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <AppRoutes />
+        <Routes>
+          <Route path="/character/:id" element={<CharacterDetailsPage />} />
+          <Route path="/" element={<CharacterGridPage />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
       </BrowserRouter>
     </div>
   );
