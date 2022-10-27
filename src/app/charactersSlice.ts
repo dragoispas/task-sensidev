@@ -12,14 +12,16 @@ export interface CharactersState {
   characters: Character[],
   charactersMap: CharacterMap,
   page: number,
-  maxPage: number
+  maxPage: number,
+  errorMessage: string | null
 }
 
 const initialState: CharactersState = {
   characters: [],
   charactersMap: {},
   page: 1,
-  maxPage: 1
+  maxPage: 1,
+  errorMessage: null
 };
 
 export const charactersSlice = createSlice({
@@ -54,14 +56,24 @@ export const charactersSlice = createSlice({
     setMaxPage: (state, action: PayloadAction<number>) => {
       state.maxPage = action.payload;
     },
+    setErrorMessage: (state, action: PayloadAction<string | null>) => {
+      state.errorMessage = action.payload;
+    }
   }
 });
 
-export const { setCharacters, addCharacterToMap, appendCharacters, setPage, incrementPage, setMaxPage } = charactersSlice.actions;
+export const { setCharacters, addCharacterToMap, appendCharacters, setPage, incrementPage, setMaxPage, setErrorMessage } = charactersSlice.actions;
 
 export const retrieveAllCharacters = (filters?: CharacterFilters) => async (dispatch: AppDispatch) => {
   try {
+    dispatch(setErrorMessage(null));
+
     const response = await getAllCharacters(filters);
+
+    if (response === null) {
+      dispatch(setErrorMessage('An error has occurred while contacting the API.'));
+    }
+
     dispatch(setCharacters(response?.results ?? []));
     dispatch(setMaxPage(response?.info?.pages ?? 1));
     dispatch(setPage(1));
@@ -79,8 +91,6 @@ export const retrieveMoreCharacters = (filters?: CharacterFilters) => async (dis
   dispatch(incrementPage());
   const response = await getAllCharacters(filters);
   dispatch(appendCharacters(response?.results ?? []));
-
-  
 }
 
 export default charactersSlice.reducer;

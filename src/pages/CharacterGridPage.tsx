@@ -6,7 +6,7 @@ import { AppDispatch, RootState } from "../app/store";
 import { useDebounce } from "../app/debounce";
 import { CharacterCard } from "../components/CharacterCard";
 import { SearchBar } from "../components/SearchBar";
-import { Button, Stack } from "../components/common";
+import { Button, Stack, Text } from "../components/common";
 
 const CharacterGrid = styled.div`
     display: flex;
@@ -20,7 +20,7 @@ const CharacterGrid = styled.div`
 
 export const CharacterGridPage = () => {
     const dispatch = useDispatch();
-    const { characters, page, maxPage } = useSelector((state: RootState) => state.characters);
+    const { characters, page, maxPage, errorMessage } = useSelector((state: RootState) => state.characters);
 
     const [searchInput, setSearchInput] = useState<string>('');
     const [status, setStatus] = useState<string>('');
@@ -37,11 +37,17 @@ export const CharacterGridPage = () => {
             <SearchBar searchInput={searchInput} setSearchInput={setSearchInput} status={status} setStatus={setStatus}/>
             <CharacterGrid>
                 {
-                    characters ? (
-                        characters.map((character) => (
-                            <CharacterCard key={character.id} id={character.id} name={character.name.toUpperCase()} status={character.status} image={character.image}/>
-                        ))
-                    ) : null
+                    !errorMessage ? (
+                        characters.length > 0 ?
+                            characters.map((character) => (
+                                <CharacterCard key={character.id} id={character.id} name={character.name.toUpperCase()} status={character.status} image={character.image}/>
+                            )) :
+                            (
+                                <Text>What you are looking for does not exist in this universe!</Text>
+                            )
+                    ) : (
+                        <Text>Error: {errorMessage}</Text>
+                    )
                 }
             </CharacterGrid>
             { 

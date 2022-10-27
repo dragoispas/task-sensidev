@@ -1,7 +1,7 @@
 
 const BASE_URL = 'https://rickandmortyapi.com/api';
 
-export type CharacterFilters = { name?: string; status?: string; page?:number };
+export type CharacterFilters = { name?: string; status?: string; page?: number };
 
 export async function getAllCharacters({ name, status, page }: CharacterFilters = {}) {
     const params = new URLSearchParams({
@@ -17,6 +17,10 @@ export async function getAllCharacters({ name, status, page }: CharacterFilters 
             method: 'GET',
         });
 
+        if (response.status === 404) {
+            return [];
+        }
+
         return response.json();
     } catch (err) {
         return null;
@@ -31,7 +35,9 @@ export async function getCharacter(characterId: number) {
         });
 
         return response.json();
-    } catch (err) {}
+    } catch (err) {
+        return null;
+    }
 }
 
 export async function getEpisodes(ids: number[]) {

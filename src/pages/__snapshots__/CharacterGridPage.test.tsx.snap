@@ -58,6 +58,12 @@ exports[`Renders the grid page and matches snapshot 1`] = `
   </div>
   <div
     className="css-127cqp7"
-  />
+  >
+    <div
+      className="css-168kp18"
+    >
+      What you are looking for does not exist in this universe!
+    </div>
+  </div>
 </div>
 `;
