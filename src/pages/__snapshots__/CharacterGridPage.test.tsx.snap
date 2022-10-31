@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders the grid page and matches snapshot 1`] = `
+<div
+  className="css-1vjcx31"
+>
+  <img
+    alt="."
+    src="images/Rick&Morty.png"
+    style={
+      Object {
+        "margin": "10px auto",
+      }
+    }
+  />
+  <div
+    className="css-6v0k7w"
+  >
+    <input
+      className="css-6qeqrq"
+      onChange={[Function]}
+      placeholder="Name"
+      type="text"
+      value=""
+    />
+    <div
+      className="css-17vjr3m"
+      color="#abdb85"
+      height="36px"
+      width="2px"
+    />
+    <select
+      className="css-1l2janw"
+      onChange={[Function]}
+      value=""
+    >
+      <option
+        value=""
+      >
+        all
+      </option>
+      <option
+        value="alive"
+      >
+        alive
+      </option>
+      <option
+        value="dead"
+      >
+        dead
+      </option>
+      <option
+        value="unknown"
+      >
+        unknown
+      </option>
+    </select>
+  </div>
+  <div
+    className="css-127cqp7"
+  >
+    <div
+      className="css-168kp18"
+    >
+      What you are looking for does not exist in this universe!
+    </div>
+  </div>
+</div>
+`;
