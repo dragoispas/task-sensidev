@@ -4,6 +4,8 @@ Features a search bar with a dropdown (that filters for status -> alive / dead /
 
 Any character card can be clicked to view more details about them. 
 
+### https://rick-and-morty-git-master-dragoispas.vercel.app/
+
 **Built using:**
 - React
 - Typescript
